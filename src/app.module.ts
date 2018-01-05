@@ -8,9 +8,10 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { GraphQLModule, GraphQLFactory } from '@nestjs/graphql';
 
 import { CatsModule } from './cats/cats.module';
+import { DogsModule } from './dogs/dogs.module';
 
 @Module({
-  imports: [CatsModule, GraphQLModule],
+  imports: [CatsModule, DogsModule, GraphQLModule],
 })
 export class ApplicationModule implements NestModule {
   constructor(private readonly graphQLFactory: GraphQLFactory) {}
@@ -29,4 +30,5 @@ export class ApplicationModule implements NestModule {
     const schema = this.graphQLFactory.createSchema({ typeDefs });
     return this.graphQLFactory.createSchema({ typeDefs });
   }
+	
 }
